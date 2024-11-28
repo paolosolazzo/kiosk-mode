@@ -213,7 +213,7 @@ class KioskMode {
 
   removeStyle(elements) {
     this.array(elements).forEach((elem) => {
-      if (this.styleExists(elem)) elem.querySelector(`#kiosk_mode_${elem.localName}`).remove();
+      if (elem && this.styleExists(elem)) elem.querySelector(`#kiosk_mode_${elem.localName}`).remove();
     });
   }
 }

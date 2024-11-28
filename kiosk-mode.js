@@ -92,7 +92,7 @@ class KioskMode {
   insertStyles(lovelace) {
     const huiRoot = lovelace.shadowRoot.querySelector("hui-root").shadowRoot;
     const drawerLayout = this.main.querySelector("app-drawer-layout");
-    const sideBar = this.drawerLayout.querySelector("ha-sidebar").shadowRoot;
+    const sideBar = drawerLayout.querySelector("ha-sidebar").shadowRoot;
     const appToolbar = huiRoot.querySelector("app-toolbar");
     const overflowStyle = "ha-button-menu{display:none !important;}";
     const headerStyle = "#view{min-height:100vh !important;--header-height:0;}app-header{display:none;}";

@@ -1,14 +1,16 @@
 # kiosk-mode
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-yellow.svg)](https://github.com/custom-components/hacs) [![hacs_badge](https://img.shields.io/badge/Buy-Me%20a%20Coffee-critical)](https://www.buymeacoffee.com/FgwNR2l)
+Forked from [kiosk-mode](https://github.com/maykar/kiosk-mode)
 
-Hides the header and/or sidebar drawer in [Home Assistant](https://www.home-assistant.io/)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-yellow.svg)](https://github.com/custom-components/hacs)
+
+Hides the header and/or sidebar drawer and/or single menu item in [Home Assistant](https://www.home-assistant.io/)
 
 ![image](example1.png)
 
 # Installation
 
-*If you previously used [custom-header](https://github.com/maykar/custom-header) you need to uninstall it from [HACS](https://hacs.xyz/)*<br>
+*If you previously used [kiosk-mode](https://github.com/maykar/kiosk-mode) you need to uninstall it from [HACS](https://hacs.xyz/)*<br>
 
 **Follow only one of two installation methods below, HACS or Manually:**
 
@@ -70,6 +72,7 @@ resources:
 |`hide_overflow:` | Boolean | false | Hides the top right menu.
 |`ignore_entity_settings:` | Boolean | false | Useful for [conditional configs](#conditional-lovelace-config) and will cause `entity_settings` to be ignored.
 |`ignore_mobile_settings:` | Boolean | false | Useful for [conditional configs](#conditional-lovelace-config) and will cause `mobile_settings` to be ignored.
+|`hide_menuitems:` | Array | empty | Array of menu items to hide
 
 ## Simple config example
 
@@ -105,6 +108,20 @@ kiosk_mode:
   non_admin_settings:
     hide_header: true
     ignore_entity_settings: true
+```
+<br>
+
+### hide_menuitems:
+Hide the menu items with *"href"* configured in hide_menuitems<br>
+*Overwritten by user_settings, mobile_settings, and entity_settings ( unless one of the ignore options is used ).*<br>
+
+```
+kiosk_mode:
+  non_admin_settings:
+    hide_header: true
+    hide_menuitems:
+      - /energy
+      - /hacs
 ```
 <br>
 
@@ -207,8 +224,5 @@ This works for all query strings except for the utility strings listed below.
 <br>
 
 ### Credit
-This was originally based on and inspired by [ciotlosm's kiosk mode gist](https://gist.github.com/ciotlosm/1f09b330aa5bd5ea87b59f33609cc931) and [corrafig's fork](https://gist.github.com/corrafig/c8288df960e7f59e82c12d14de26fde8) of the same gist.
+Big thank you to [maykar](https://github.com/maykar) for the original project.
 
-Big thank you to [matt8707](https://github.com/matt8707) for starting this project, allowing me to rewrite it, and transfering ownership.
-
-Many thanks to [KTibow](https://github.com/KTibow) as well, for the github release action and support.

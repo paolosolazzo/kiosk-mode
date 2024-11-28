@@ -81,6 +81,7 @@ class KioskMode {
           if ("hide_sidebar" in conf) this.hideSidebar = conf.hide_sidebar;
           if ("hide_overflow" in conf) this.hideOverflow = conf.hide_overflow;
           if ("hide_menubutton" in conf) this.hideMenuButton = conf.hide_menubutton;
+          if ("hide_menuitems" in conf) this.hideMenuButton = conf.hide_menuitems;
           if ("kiosk" in conf) this.hideHeader = this.hideSidebar = conf.kiosk;
         }
       }
@@ -127,7 +128,7 @@ class KioskMode {
       this.menuItems = sideBar.querySelectorAll("a[role='option']");
       
       this.menuItems.forEach(item => {
-        if (this.hideMenuItems.includes(item.href)) {
+        if (this.hideMenuItems.includes(item.getAttribute("href"))) {
           this.addStyle("{display: none !important;}", item);
         } else {
           this.removeStyle(item);

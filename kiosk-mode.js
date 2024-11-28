@@ -86,12 +86,18 @@ class KioskMode {
       }
     }
 
+    if ("hide_menuitem" in conf) {
+      this.hideMenuItems = conf.hide_menuitems;
+      console.log(conf.hide_menuitems);
+    }
+
     this.insertStyles(lovelace);
   }
 
   insertStyles(lovelace) {
     const huiRoot = lovelace.shadowRoot.querySelector("hui-root").shadowRoot;
     const drawerLayout = this.main.querySelector("app-drawer-layout");
+    const sideBar = this.drawerLayout.querySelector("ha-sidebar").shadowRoot;
     const appToolbar = huiRoot.querySelector("app-toolbar");
     const overflowStyle = "ha-button-menu{display:none !important;}";
     const headerStyle = "#view{min-height:100vh !important;--header-height:0;}app-header{display:none;}";
@@ -119,6 +125,19 @@ class KioskMode {
       if (this.queryString("cache")) this.setCache("kmMenuButton", "true");
     } else {
       this.removeStyle(appToolbar);
+    }
+
+
+    if (this.hideMenuItems?.length) {
+      this.menuItems = sideBar.querySelectorAll("a[role='option']");
+      
+      this.menuItems.forEach(item => {
+        if (this.hideMenuItems.includes(item.href)) {
+          this.addStyle("{display: none !important;}", item);
+        } else {
+          this.removeStyle(item);
+        }
+      });
     }
 
     // Resize window to "refresh" view.

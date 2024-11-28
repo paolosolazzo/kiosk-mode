@@ -91,7 +91,7 @@ class KioskMode {
 
   insertStyles(lovelace) {
     const huiRoot = lovelace.shadowRoot.querySelector("hui-root").shadowRoot;
-    const drawerLayout = this.main.querySelector("app-drawer-layout");
+    const drawerLayout = this.main.querySelector("ha-drawer");
     const sideBar = drawerLayout.querySelector("ha-sidebar").shadowRoot;
     const appToolbar = huiRoot.querySelector("app-toolbar");
     const overflowStyle = "ha-button-menu{display:none !important;}";
@@ -100,7 +100,6 @@ class KioskMode {
     console.log("debug!");
 
     if (this.hideHeader || this.hideOverflow) {
-      this.addStyle(`${this.hideHeader ? headerStyle : ""}${this.hideOverflow ? overflowStyle : ""}`, huiRoot);
       if (this.queryString("cache")) {
         if (this.hideHeader) this.setCache("kmHeader", "true");
         if (this.hideOverflow) this.setCache("kmOverflow", "true");

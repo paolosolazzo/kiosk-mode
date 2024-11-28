@@ -96,6 +96,8 @@ class KioskMode {
     const appToolbar = huiRoot.querySelector("app-toolbar");
     const overflowStyle = "ha-button-menu{display:none !important;}";
     const headerStyle = "#view{min-height:100vh !important;--header-height:0;}app-header{display:none;}";
+    debugger;
+    console.log("debug!");
 
     if (this.hideHeader || this.hideOverflow) {
       this.addStyle(`${this.hideHeader ? headerStyle : ""}${this.hideOverflow ? overflowStyle : ""}`, huiRoot);
@@ -122,7 +124,6 @@ class KioskMode {
       this.removeStyle(appToolbar);
     }
 
-    debugger;
     if (this.hideMenuItems?.length) {
       this.menuItems = sideBar.querySelectorAll("a[role='option']");
       

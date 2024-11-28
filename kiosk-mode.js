@@ -212,6 +212,15 @@ class KioskMode {
     }
   }
 
+  addClassAndStyle(css, elem) {
+    if (!this.styleExists(elem)) {
+      const kiosk_id = `kiosk_id_${elem.localName}`;
+      elem.setAttribute("data-kiosk-id", kiosk_id);
+      const final_css = `${elem.tagName}[data-kiosk-id=${kiosk_id}]${css}`;
+      this.addStyle(final_css, elem);
+    }
+  }
+
   removeStyle(elements) {
     this.array(elements).forEach((elem) => {
       if (elem && this.styleExists(elem)) elem.querySelector(`#kiosk_mode_${elem.localName}`).remove();

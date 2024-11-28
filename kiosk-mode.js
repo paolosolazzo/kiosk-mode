@@ -86,11 +86,6 @@ class KioskMode {
       }
     }
 
-    if ("hide_menuitem" in conf) {
-      this.hideMenuItems = conf.hide_menuitems;
-      console.log(conf.hide_menuitems);
-    }
-
     this.insertStyles(lovelace);
   }
 
@@ -180,6 +175,7 @@ class KioskMode {
     this.hideMenuButton = config.kiosk || config.hide_menubutton;
     this.ignoreEntity = config.ignore_entity_settings;
     this.ignoreMobile = config.ignore_mobile_settings;
+    this.hideMenuItems = config.hide_menuitems;
   }
 
   // Convert to array.

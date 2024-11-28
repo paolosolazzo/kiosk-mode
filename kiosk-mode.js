@@ -122,7 +122,7 @@ class KioskMode {
       this.removeStyle(appToolbar);
     }
 
-
+    debugger;
     if (this.hideMenuItems?.length) {
       this.menuItems = sideBar.querySelectorAll("a[role='option']");
       
